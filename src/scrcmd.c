@@ -49,6 +49,7 @@
 #include "tv.h"
 #include "window.h"
 #include "constants/event_objects.h"
+#include "quest.h"
 
 typedef u16 (*SpecialFunc)(void);
 typedef void (*NativeFunc)(void);
@@ -2298,4 +2299,73 @@ bool8 ScrCmd_warpsootopolislegend(struct ScriptContext *ctx)
     DoSootopolisLegendWarp();
     ResetInitialPlayerAvatarState();
     return TRUE;
+}
+
+#include "quest.h"
+bool8 ScrCmd_givequest(struct ScriptContext *ctx)
+{
+    u16 questId = ScriptReadHalfword(ctx);
+    gSpecialVar_Result = GiveQuest(questId);
+    return FALSE;
+}
+
+bool8 ScrCmd_givequestsilent(struct ScriptContext *ctx)
+{
+    u16 questId = ScriptReadHalfword(ctx);
+    gSpecialVar_Result = GiveQuestSilent(questId);
+    return FALSE;
+}
+
+bool8 ScrCmd_checkquestactive(struct ScriptContext *ctx) 
+{
+    u16 questId = ScriptReadHalfword(ctx);
+    gSpecialVar_Result = HasQuest(questId);
+    return FALSE;
+}
+
+bool8 ScrCmd_checkquestcomplete(struct ScriptContext *ctx)
+{
+    u16 questId = ScriptReadHalfword(ctx);
+    gSpecialVar_Result = DidCompleteQuest(questId);
+    return FALSE;
+}
+
+bool8 ScrCmd_checkquestactiveorcomplete(struct ScriptContext *ctx)
+{
+    u16 questId = ScriptReadHalfword(ctx);
+    gSpecialVar_Result = HasOrCompletedQuest(questId);
+    return FALSE;
+}
+
+bool8 ScrCmd_getcurrentqueststep(struct ScriptContext *ctx)
+{
+    u16 questId = ScriptReadHalfword(ctx);
+    gSpecialVar_Result = GetCurrentQuestStepId(questId);
+    return FALSE;
+}
+
+bool8 ScrCmd_advancequest(struct ScriptContext *ctx)
+{
+    AdvanceQuest(ScriptReadHalfword(ctx));
+    return FALSE;
+}
+
+bool8 ScrCmd_completequest(struct ScriptContext *ctx)
+{
+    CompleteQuest(ScriptReadHalfword(ctx));
+    return FALSE;
+}
+
+bool8 ScrCmd_setqueststep(struct ScriptContext *ctx)
+{
+    u16 questId = ScriptReadHalfword(ctx);
+    u16 stepId = ScriptReadHalfword(ctx);
+    SetQuestStep(questId, stepId);
+    return FALSE;
+}
+
+bool8 ScrCmd_resetquest(struct ScriptContext *ctx)
+{
+    ResetQuest(ScriptReadHalfword(ctx));
+    return FALSE;
 }

@@ -227,6 +227,16 @@ gScriptCmdTable:: @ 81DB67C
 	.4byte ScrCmd_warpsootopolislegend
 	.4byte ScrCmd_buffercontesttype
 	.4byte ScrCmd_bufferitemnameplural
+	.4byte ScrCmd_givequest
+	.4byte ScrCmd_givequestsilent
+	.4byte ScrCmd_checkquestactive
+	.4byte ScrCmd_checkquestcomplete
+	.4byte ScrCmd_checkquestactiveorcomplete
+	.4byte ScrCmd_getcurrentqueststep
+	.4byte ScrCmd_advancequest
+	.4byte ScrCmd_completequest
+	.4byte ScrCmd_setqueststep
+	.4byte ScrCmd_resetquest
 
 gScriptCmdTableEnd:: @ 81DBA08
 	.4byte ScrCmd_nop
