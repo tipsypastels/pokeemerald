@@ -44,8 +44,8 @@ bool8 HasQuest(u16);
 bool8 DidCompleteQuest(u16);
 bool8 HasOrCompletedQuest(u16);
 u16 GetCurrentQuestStepId(u16);
+u8 AdvanceQuest(u16);
 void ResetQuest(u16);
-void AdvanceQuest(u16);
 void CompleteQuest(u16);
 void SetQuestStep(u16, u16);
 

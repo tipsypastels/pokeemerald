@@ -1584,12 +1584,12 @@
 	.2byte \questId
 	.endm
 
-	.macro advancequest questId:req
+	.macro advancequestsilent questId:req
 	.byte 0xe8
 	.2byte \questId
 	.endm
 
-	.macro completequest questId:req
+	.macro completequestsilent questId:req
 	.byte 0xe9
 	.2byte \questId
 	.endm
@@ -1772,4 +1772,14 @@
 	.macro givequest questId: req
 	givequestsilent \questId
 	call Quest_GotQuest
+	.endm
+
+	.macro advancequest questId:req
+	advancequestsilent \questId
+	call Quest_AdvanceQuest
+	.endm
+
+	.macro completequest questId:req
+	completequestsilent \questId
+	call Quest_CompleteQuest
 	.endm

@@ -232,8 +232,8 @@ gScriptCmdTable:: @ 81DB67C
 	.4byte ScrCmd_checkquestcomplete
 	.4byte ScrCmd_checkquestactiveorcomplete
 	.4byte ScrCmd_getcurrentqueststep
-	.4byte ScrCmd_advancequest
-	.4byte ScrCmd_completequest
+	.4byte ScrCmd_advancequestsilent
+	.4byte ScrCmd_completequestsilent
 	.4byte ScrCmd_setqueststep
 	.4byte ScrCmd_resetquest
 

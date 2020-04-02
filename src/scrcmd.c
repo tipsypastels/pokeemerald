@@ -2339,13 +2339,14 @@ bool8 ScrCmd_getcurrentqueststep(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 ScrCmd_advancequest(struct ScriptContext *ctx)
+bool8 ScrCmd_advancequestsilent(struct ScriptContext *ctx)
 {
-    AdvanceQuest(ScriptReadHalfword(ctx));
+    u16 questId = ScriptReadHalfword(ctx);
+    gSpecialVar_Result = AdvanceQuest(questId);
     return FALSE;
 }
 
-bool8 ScrCmd_completequest(struct ScriptContext *ctx)
+bool8 ScrCmd_completequestsilent(struct ScriptContext *ctx)
 {
     CompleteQuest(ScriptReadHalfword(ctx));
     return FALSE;
