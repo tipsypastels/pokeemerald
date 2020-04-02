@@ -40,7 +40,6 @@ struct Quest {
 };
 
 bool8 GiveQuest(u16);
-bool8 GiveQuestSilent(u16);
 bool8 HasQuest(u16);
 bool8 DidCompleteQuest(u16);
 bool8 HasOrCompletedQuest(u16);

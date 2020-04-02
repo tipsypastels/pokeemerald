@@ -2302,17 +2302,12 @@ bool8 ScrCmd_warpsootopolislegend(struct ScriptContext *ctx)
 }
 
 #include "quest.h"
-bool8 ScrCmd_givequest(struct ScriptContext *ctx)
-{
-    u16 questId = ScriptReadHalfword(ctx);
-    gSpecialVar_Result = GiveQuest(questId);
-    return FALSE;
-}
 
+// NOTE: There is no "ScrCmd_givequest" because it's a supplementary macro that just calls this one and renders a msgbox.
 bool8 ScrCmd_givequestsilent(struct ScriptContext *ctx)
 {
     u16 questId = ScriptReadHalfword(ctx);
-    gSpecialVar_Result = GiveQuestSilent(questId);
+    gSpecialVar_Result = GiveQuest(questId);
     return FALSE;
 }
 

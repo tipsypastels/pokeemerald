@@ -1559,54 +1559,49 @@
 	.2byte \quantity
 	.endm
 
-	.macro givequest questId:req
+	.macro givequestsilent questId:req
 	.byte 0xe3
 	.2byte \questId
 	.endm
 
-	.macro givequestsilent questId:req
+	.macro checkquestactive questId:req
 	.byte 0xe4
 	.2byte \questId
 	.endm
 
-	.macro checkquestactive questId:req
+	.macro checkquestcomplete questId:req
 	.byte 0xe5
 	.2byte \questId
 	.endm
 
-	.macro checkquestcomplete questId:req
+	.macro checkquestactiveorcomplete questId:req
 	.byte 0xe6
 	.2byte \questId
 	.endm
 
-	.macro checkquestactiveorcomplete questId:req
+	.macro getcurrentqueststep questId:req
 	.byte 0xe7
 	.2byte \questId
 	.endm
 
-	.macro getcurrentqueststep questId:req
+	.macro advancequest questId:req
 	.byte 0xe8
 	.2byte \questId
 	.endm
 
-	.macro advancequest questId:req
+	.macro completequest questId:req
 	.byte 0xe9
 	.2byte \questId
 	.endm
 
-	.macro completequest questId:req
-	.byte 0xea
-	.2byte \questId
-	.endm
-
 	.macro setqueststep questId:req, stepId:req
-	.byte 0xeb
+	.byte 0xea
 	.2byte \questId
 	.2byte \stepId
 	.endm
 
 	.macro resetquest questId:req
-	.byte 0xec
+	.byte 0xeb
 	.2byte \questId
 	.endm
 
@@ -1772,4 +1767,9 @@
 	setfieldeffectargument 1, \y
 	setfieldeffectargument 2, \priority
 	dofieldeffect FLDEFF_SPARKLE
+	.endm
+
+	.macro givequest questId: req
+	givequestsilent \questId
+	call Quest_GotQuest
 	.endm

@@ -12,6 +12,10 @@
 #include "constants/flags.h"
 #include "constants/vars.h"
 
+static const u8 sGotQuestText[] = _("Got a quest!");
+static const u8 sAdvancedQuestText[] = _("Advanced a quest!");
+static const u8 sCompleteQuestText[] = _("Completed a quest!");
+
 static const u8 sTestQuestName[] = _("Test Quest");
 static const u8 sTestQuestStepName[] = _("Test Step");
 static const u8 sTestQuestStepName2[] = _("Test Step 2");
@@ -37,14 +41,6 @@ static const struct QuestStep sQuestSteps[] = {
 };
 
 bool8 GiveQuest(u16 questId) {
-  bool8 success = GiveQuestSilent(questId);
-  if (success) {
-    // log
-  }
-  return success;
-}
-
-bool8 GiveQuestSilent(u16 questId) {
   const struct Quest quest = sQuestList[questId];
 
   if (HasOrCompletedQuest(questId)) {
@@ -56,6 +52,7 @@ bool8 GiveQuestSilent(u16 questId) {
   }
 
   FlagSet(quest.ongoingFlag);
+  StringCopy(gStringVar1, quest.name);
   return TRUE;
 }
 
